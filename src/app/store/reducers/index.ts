@@ -7,6 +7,8 @@ import { createFeatureSelector, ActionReducerMap } from '@ngrx/store';
 
 import * as fromRouter from '@ngrx/router-store';
 
+import * as fromApp from './app.config';
+
 export interface RouterStateUrl {
   url: string;
   queryParams: Params;
@@ -15,10 +17,12 @@ export interface RouterStateUrl {
 
 export interface State {
   routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
+  appConfig: fromApp.AppConfigState;
 }
 
 export const reducers: ActionReducerMap<State> = {
   routerReducer: fromRouter.routerReducer,
+  appConfig: fromApp.reducer,
 };
 
 export const getRouterState = createFeatureSelector<

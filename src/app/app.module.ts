@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 
 import { AppComponent } from './containers/app/app.component';
 
 // ngrx modules - START
 import {EffectsModule} from '@ngrx/effects';
-import {MetaReducer, StoreModule} from '@ngrx/store';
+import {MetaReducer, Store, StoreModule} from '@ngrx/store';
 import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {storeFreeze} from 'ngrx-store-freeze';
@@ -20,6 +20,7 @@ import {CustomSerializer, reducers} from './store/reducers';
 import {RouterModule} from '@angular/router';
 import {ROUTES} from './app.routes';
 import {CasesModule} from '../cases/cases.module';
+import {initApplication} from './app-initilizer';
 
 
 
@@ -38,7 +39,15 @@ import {CasesModule} from '../cases/cases.module';
       logOnly: environment.production
     }),
   ],
-  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
+  providers: [
+    { provide: RouterStateSerializer, useClass: CustomSerializer },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApplication,
+      deps: [Store],
+      multi: true
+    },
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

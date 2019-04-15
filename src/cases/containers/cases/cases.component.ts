@@ -1,7 +1,5 @@
-
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-
 
 /**
  * Bootstraps the Cases Components
@@ -9,7 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-cases-component',
-  template: ``,
+  template: `<h1>cases compoent</h1>`,
 })
 export class CasesComponent {
 

@@ -1,0 +1,8 @@
+{
+  "features": {
+    "case-search": {
+      "isEnabled": true,
+      "label": "CaseSearchComponent"
+    }
+  }
+}
