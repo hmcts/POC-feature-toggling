@@ -10,30 +10,27 @@ import * as fromContainers from './containers';
 // components
 import * as fromComponent from './components';
 
-
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 
-import { reducers, effects } from './store';
+import { reducer } from './store';
 import {HttpClientModule} from '@angular/common/http';
-import {HmctsFormBuilderModule} from '../../projects/hmcts-form-builder/src/lib/hmcts-form-builder.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    HmctsFormBuilderModule,
     casesRouting,
-    StoreModule.forFeature('cases', reducers),
-    EffectsModule.forFeature(effects),
+    StoreModule.forFeature('cases', reducer),
+    // EffectsModule.forFeature(effects),
   ],
   exports: [...fromContainers.containers, ...fromComponent.components],
   declarations: [...fromContainers.containers, ...fromComponent.components],
 })
 
 /**
- * Entry point to RegisterModule
+ * Entry point to CasesModule
  */
 
 export class CasesModule {

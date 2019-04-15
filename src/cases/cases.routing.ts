@@ -5,7 +5,7 @@ import {CasesComponent} from './containers';
 
 export const ROUTES: Routes = [
   {
-    path: 'register',
+    path: 'cases',
     component: CasesComponent,
   }
 ];

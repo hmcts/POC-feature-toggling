@@ -17,6 +17,10 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
 import {environment} from '../environments/environment';
 import {effects} from './store/effects';
 import {CustomSerializer, reducers} from './store/reducers';
+import {RouterModule} from '@angular/router';
+import {ROUTES} from './app.routes';
+import {CasesModule} from '../cases/cases.module';
+
 
 
 @NgModule({
@@ -25,6 +29,8 @@ import {CustomSerializer, reducers} from './store/reducers';
   ],
   imports: [
     BrowserModule,
+    CasesModule,
+    RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
