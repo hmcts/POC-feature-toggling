@@ -22,6 +22,9 @@ import {ROUTES} from './app.routes';
 import {CasesModule} from '../cases/cases.module';
 import {initApplication} from './app-initilizer';
 
+// services
+import * as fromServices from './services/';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -38,7 +41,10 @@ import {initApplication} from './app-initilizer';
     }),
   ],
   providers: [
-    { provide: RouterStateSerializer, useClass: CustomSerializer },
+    ...fromServices.services,
+    {
+      provide: RouterStateSerializer,
+      useClass: CustomSerializer },
     {
       provide: APP_INITIALIZER,
       useFactory: initApplication,

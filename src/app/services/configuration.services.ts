@@ -20,7 +20,6 @@ export class AppConfigService {
   private environments: ConfigurationModel | {};
 
   load(): Observable<any> {
-    // const jsonFile = `assets/features/features.${environment.name}.json`;
     const jsonFile = `assets/config/config.json`;
     return this.http.get(jsonFile).pipe(
       catchError(this.handleError)
@@ -32,7 +31,7 @@ export class AppConfigService {
       this.environments = config;
     });
   }
-  // todo make it global
+  // todo make it global and make it make sense
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
