@@ -24,13 +24,11 @@ import {initApplication} from './app-initilizer';
 
 
 // directives
-import * as fromDirectives from './directives';
 import {ProvidersModule} from './providers/providers.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ...fromDirectives.directives,
   ],
   imports: [
     BrowserModule,

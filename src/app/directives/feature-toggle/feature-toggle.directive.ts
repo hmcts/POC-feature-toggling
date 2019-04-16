@@ -1,19 +1,22 @@
 import { Directive, Input, TemplateRef, ViewContainerRef, OnInit } from '@angular/core';
 import {ConfigurationModel} from '../../models/configuration.model';
+import {AppConfigService} from '../../services/configuration.services';
 
 @Directive({
   selector: '[featureToggle]'
 })
 export class FeatureToggleDirective implements OnInit {
-  @Input() featureKey: string;
-  @Input() featureConfig: ConfigurationModel;
+  @Input() featureToggle: string;
+  config: ConfigurationModel;
 
   constructor(
     private templateRef: TemplateRef<any>,
-    private viewContainer: ViewContainerRef
+    private viewContainer: ViewContainerRef,
+    private appConfigService: AppConfigService
   ) {}
 
   ngOnInit() {
+    this.config = this.appConfigService.getFeatureToggle();
     if (this.isEnabled()) {
       this.viewContainer.createEmbeddedView(this.templateRef);
     } else {
@@ -22,9 +25,9 @@ export class FeatureToggleDirective implements OnInit {
   }
 
   isEnabled() {
-    if (this.featureKey['*']) {
+    if (!this.config[this.featureToggle]) {
       return true;
     }
-    return this.featureConfig[this.featureKey].isEnabled;
+    return this.config[this.featureToggle].isEnabled;
   }
 }

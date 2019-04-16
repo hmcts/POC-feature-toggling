@@ -14,6 +14,9 @@ import * as fromComponent from './components';
 // routes
 import {casesRouting} from './cases.routing';
 
+// directives
+import * as fromDirectives from '../app/directives';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +27,7 @@ import {casesRouting} from './cases.routing';
     // EffectsModule.forFeature(effects),
   ],
   exports: [...fromContainers.containers, ...fromComponent.components],
-  declarations: [...fromContainers.containers, ...fromComponent.components],
+  declarations: [...fromContainers.containers, ...fromComponent.components,  ...fromDirectives.directives,],
 })
 
 /**

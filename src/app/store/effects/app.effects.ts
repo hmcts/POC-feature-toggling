@@ -33,7 +33,7 @@ export class AppEffects {
   setConfig = this.actions$.pipe(
     ofType(fromActions.APP_LOAD_CONFIG_SUCCESS),
     switchMap(() => {
-      this.configurationServices.setEnvironments();
+      this.configurationServices.setConfiguration();
       return of();
     })
   );

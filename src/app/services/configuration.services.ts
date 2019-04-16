@@ -26,7 +26,7 @@ export class AppConfigService {
     );
   }
 
-  setEnvironments() {
+  setConfiguration() {
     this.store.pipe(select(fromApp.getAppFeatures), take(1)).subscribe(config => {
       this.configuration = config;
     });
