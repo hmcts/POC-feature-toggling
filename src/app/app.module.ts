@@ -25,9 +25,13 @@ import {initApplication} from './app-initilizer';
 // services
 import * as fromServices from './services/';
 
+// directives
+import * as fromDiretives from './directives';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ...fromDiretives.directives,
   ],
   imports: [
     BrowserModule,

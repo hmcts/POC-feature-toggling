@@ -17,7 +17,7 @@ import {throwError} from 'rxjs';
 export class AppConfigService {
 
   constructor(private http: HttpClient,  private store: Store<fromApp.State>) {}
-  private environments: ConfigurationModel | {};
+  private configuration: ConfigurationModel;
 
   load(): Observable<any> {
     const jsonFile = `assets/config/config.json`;
@@ -28,9 +28,13 @@ export class AppConfigService {
 
   setEnvironments() {
     this.store.pipe(select(fromApp.getAppFeatures), take(1)).subscribe(config => {
-      this.environments = config;
+      this.configuration = config;
     });
   }
+  getFeatureToggle() {
+    return this.configuration.features;
+  }
+
   // todo make it global and make it make sense
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
