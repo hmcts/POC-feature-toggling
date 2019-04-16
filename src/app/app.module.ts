@@ -22,15 +22,13 @@ import {ROUTES} from './app.routes';
 import {CasesModule} from '../cases/cases.module';
 import {initApplication} from './app-initilizer';
 
-
-
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    CasesModule,
+    CasesModule,  // TODO remove if lazy loaded
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
