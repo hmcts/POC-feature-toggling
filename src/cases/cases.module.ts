@@ -1,8 +1,9 @@
 import {NgModule} from '@angular/core';
-
 import {CommonModule} from '@angular/common';
-import {casesRouting} from './cases.routing';
-
+import {StoreModule} from '@ngrx/store';
+import {HttpClientModule} from '@angular/common/http';
+import {ProvidersModule} from '../app/providers/providers.module';
+import { reducer } from './store';
 
 // containers
 import * as fromContainers from './containers';
@@ -10,12 +11,8 @@ import * as fromContainers from './containers';
 // components
 import * as fromComponent from './components';
 
-import {StoreModule} from '@ngrx/store';
-import {EffectsModule} from '@ngrx/effects';
-
-import { reducer } from './store';
-import {HttpClientModule} from '@angular/common/http';
-
+// routes
+import {casesRouting} from './cases.routing';
 
 @NgModule({
   imports: [
@@ -23,6 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     casesRouting,
     StoreModule.forFeature('cases', reducer),
+    ProvidersModule
     // EffectsModule.forFeature(effects),
   ],
   exports: [...fromContainers.containers, ...fromComponent.components],

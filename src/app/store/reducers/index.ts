@@ -7,7 +7,7 @@ import { createFeatureSelector, ActionReducerMap } from '@ngrx/store';
 
 import * as fromRouter from '@ngrx/router-store';
 
-import * as fromApp from './app.config';
+import * as fromApp from './app-config.reducer';
 
 export interface RouterStateUrl {
   url: string;

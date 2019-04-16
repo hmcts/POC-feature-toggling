@@ -22,20 +22,20 @@ import {ROUTES} from './app.routes';
 import {CasesModule} from '../cases/cases.module';
 import {initApplication} from './app-initilizer';
 
-// services
-import * as fromServices from './services/';
 
 // directives
-import * as fromDiretives from './directives';
+import * as fromDirectives from './directives';
+import {ProvidersModule} from './providers/providers.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ...fromDiretives.directives,
+    ...fromDirectives.directives,
   ],
   imports: [
     BrowserModule,
     CasesModule,  // TODO remove if lazy loaded
+    ProvidersModule.forRoot(),
     RouterModule.forRoot(ROUTES),
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
@@ -45,7 +45,6 @@ import * as fromDiretives from './directives';
     }),
   ],
   providers: [
-    ...fromServices.services,
     {
       provide: RouterStateSerializer,
       useClass: CustomSerializer },
