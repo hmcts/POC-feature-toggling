@@ -24,7 +24,7 @@
     "@ngrx/router-store": "^6.0.3",
     "@ngrx/store": "^6.0.3",
     "@ngrx/store-devtools": "^6.0.3",
-    "core-js": "^2.5.4",
+    "core-js": "^2.6.12",
     "govuk-frontend": "2.5.0",
     "rxjs": "^6.4.0",
     "rxjs-compat": "^6.4.0",
